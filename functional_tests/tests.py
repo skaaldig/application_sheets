@@ -1,10 +1,11 @@
 import unittest
 import time
 
+from django.test import LiveServerTestCase
 from selenium import webdriver
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -15,7 +16,7 @@ class NewVisitorTest(unittest.TestCase):
     def test_list_of_forms_loads(self):
         # User goes to url page loads.
 
-        self.browser.get('http://127.0.0.1:8000/')
+        self.browser.get(self.live_server_url)
         self.assertIn('Application Information', self.browser.title)
 
         # User sees a dropdown menu
@@ -30,14 +31,15 @@ class NewVisitorTest(unittest.TestCase):
         drop_down_true = all(item.get_attribute('innerHTML').lower() in expected_items for item in drop_down_items)
         self.assertEqual(drop_down_true, True)
 
-        # User presses on Level Measurement and is directed to a new page
+        # User presses on Level Measurement
         level_item = drop_down_items[1]
         self.assertEqual(level_item.get_attribute('innerHTML').lower(), expected_items[1])
         time.sleep(1)
         drop_down.click()
         level_item.click()
+        time.sleep(1)
 
+        # User is redirected to new page
+        self.assertEqual(self.browser.current_url, self.live_server_url + '/level-measurement/')
 
-
-if __name__ == "__main__":
-    unittest.main(warnings="ignore")
+        # User 
