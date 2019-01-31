@@ -41,5 +41,6 @@ class NewVisitorTest(LiveServerTestCase):
 
         # User is redirected to new page
         self.assertEqual(self.browser.current_url, self.live_server_url + '/level-measurement/')
+        
 
         # User 
