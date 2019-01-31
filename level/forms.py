@@ -41,7 +41,7 @@ class GeneralInfoForm(forms.Form):
     chamber_material = forms.CharField(max_length=255)
 
 
-class ProcessConditionsForm(forms.Form):
+class TankInformationForm(forms.Form):
     UNITS = (
         ('FT', 'FT'),
         ('IN', 'IN')
@@ -64,5 +64,102 @@ class ProcessConditionsForm(forms.Form):
     nozzel_center_to_wall_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
     alt_process_connection = forms.CharField(max_length=255)
 
-class InstrumentSpecsForm(forms.Form):
-    pass
+
+class ProcessConditionsForm(forms.Form):
+    TEMP_UNITS = (
+        ('C', 'F'),
+        ('F', 'F'),
+        ('K', 'K')
+    )
+
+    PRESSURE_UNITS = (
+        ('PSIG', 'PSIG'),
+        ('BARG', 'BARG')
+    )
+
+    STATES = (
+        ('LIQUID', 'Liquid'),
+        ('POWDER', 'Powder'),
+        ('PASTE', 'Paste'),
+        ('SLUDGE', 'Sludge')
+    )
+
+    CHARACTERISTICS = (
+        ('CLEAN', 'Clean'),
+        ('COATS', 'Coats'),
+        ('CRYSTALIZES', 'Crystalizes'),
+        ('Deposits', 'Deposits'),
+        ('DUSTY', 'Dusty')
+    )
+
+    SURFACES = (
+        ('SMOOTH', 'Smooth'),
+        ('AGITATED', 'Agitated'),
+        ('FOAMS', 'Foams')
+    )
+
+    medium_min_temp = forms.IntegerField()
+    medium_min_unit = forms.ChoiceField(widget=forms.Select, choices=TEMP_UNITS)
+    medium_max_temp = forms.IntegerField()
+    medium_max_unit = forms.ChoiceField(widget=forms.Select, choices=TEMP_UNITS)
+
+    vessel_min_pressure = forms.IntegerField()
+    vessel_min_unit = forms.ChoiceField(widget=forms.Select, choices=PRESSURE_UNITS)
+    vessel_max_pressure = forms.IntegerField()
+    vessel_max_unit = forms.ChoiceField(widget=forms.Select, choices=PRESSURE_UNITS)
+
+    dielectric_top = forms.IntegerField()
+    dielectric_bottom = forms.IntegerField()
+
+    medium_name = forms.CharField(max_length=255)
+    media_state = forms.ChoiceField(widget=forms.Select, choices=STATES)
+    media_characteristics = forms.ChoiceField(widget=forms.Select, choices=CHARACTERISTICS)
+    liquid_surface = forms.ChoiceField(widget=forms.Select, choices=SURFACES)
+
+    foam_description = forms.TextField(required=False)
+
+
+class InstrumentSpecificsForm(forms.Form):
+    HOUSING = (
+        ('INTEGRAL', 'Integral'),
+        ('REMOTE', 'Remote')
+    )
+
+    CLASSIFICATION = (
+        ('IS(C1D1)', 'IS(C1D1)'),
+        ('NI(C1D2)', 'NI(C1D2)'),
+        ('XP(C1D1)', 'XP(C1D1)'),
+        ('SIL2', 'SIL2')
+    )
+
+    POWER = (
+        ('24VDC', '24 vdc'),
+        ('100VAC', '100 vac'),
+        ('OTHER', 'Other')
+    )
+
+    OUTPUTS = (
+        ('4-20MA HART', '4-20ma HART'),
+        ('FF', 'FF'),
+        ('OTHER', 'Other')
+    )
+
+    ALARM_OPTIONS = (
+        ('H', 'High'),
+        ('L', 'Low')
+    )
+
+    PUMP_CONTROL = (
+        ('Y', 'Yes'),
+        ('N', 'No')
+    )
+
+    power_available = forms.ChoiceField(widget=forms.Select, choices=POWER)
+    power_outputs = forms.ChoiceField(widget=forms.Select, choices=OUTPUTS)
+    alarms = forms.ChoiceField(widget=forms.Select, choices=ALARM_OPTIONS)
+    alarms_description = forms.TextField(required=False)
+    pump_options = forms.ChoiceField(widget=forms.Select, choices=PUMP_CONTROL)
+    pump_options_description = forms.TextField(required=False)
+    area_classification = forms.ChoiceField(widget=forms.Select, choices=CLASSIFICATION)
+    electrical_housing = forms.ChoiceField(widget=forms.Select, choices=HOUSING)
+    special_requirements = forms.TextField()
