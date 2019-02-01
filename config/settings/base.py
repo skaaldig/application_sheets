@@ -68,6 +68,8 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'formtools',
+    'widget_tweaks',
 ]
 LOCAL_APPS = [
     'appsheets.users.apps.UsersAppConfig',

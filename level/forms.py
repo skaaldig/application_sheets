@@ -6,6 +6,7 @@ class ContactInfoForm(forms.Form):
     name = forms.CharField(max_length=150)
     company = forms.CharField(max_length=255)
     phone = forms.CharField(max_length=15)
+    email = forms.EmailField()
     address = forms.CharField(max_length=255)
     state = forms.CharField(max_length=2)
     city = forms.CharField(max_length=150)
@@ -35,9 +36,9 @@ class GeneralInfoForm(forms.Form):
     measurement_principal = forms.ChoiceField(widget=forms.Select, choices=MEASURING_PRINCIPAL)
     measurement_type = forms.ChoiceField(widget=forms.Select, choices=MEASUREMENT_TYPE)
     chamber_height = forms.IntegerField()
+    height_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
     chamber_width = forms.IntegerField()
     width_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
-    height_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
     chamber_material = forms.CharField(max_length=255)
 
 
@@ -116,7 +117,7 @@ class ProcessConditionsForm(forms.Form):
     media_characteristics = forms.ChoiceField(widget=forms.Select, choices=CHARACTERISTICS)
     liquid_surface = forms.ChoiceField(widget=forms.Select, choices=SURFACES)
 
-    foam_description = forms.TextField(required=False)
+    foam_description = forms.CharField(required=False, widget=forms.Textarea)
 
 
 class InstrumentSpecificsForm(forms.Form):
@@ -157,9 +158,9 @@ class InstrumentSpecificsForm(forms.Form):
     power_available = forms.ChoiceField(widget=forms.Select, choices=POWER)
     power_outputs = forms.ChoiceField(widget=forms.Select, choices=OUTPUTS)
     alarms = forms.ChoiceField(widget=forms.Select, choices=ALARM_OPTIONS)
-    alarms_description = forms.TextField(required=False)
+    alarms_description = forms.CharField(required=False, widget=forms.Textarea)
     pump_options = forms.ChoiceField(widget=forms.Select, choices=PUMP_CONTROL)
-    pump_options_description = forms.TextField(required=False)
+    pump_options_description = forms.CharField(required=False, widget=forms.Textarea)
     area_classification = forms.ChoiceField(widget=forms.Select, choices=CLASSIFICATION)
     electrical_housing = forms.ChoiceField(widget=forms.Select, choices=HOUSING)
-    special_requirements = forms.TextField()
+    special_requirements = forms.CharField(required=False, widget=forms.Textarea)

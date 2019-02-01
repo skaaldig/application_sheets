@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head %}
+{{ wizard.form.media }}
+{% load widget_tweaks %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-5 pb-5 pt-3 bg-primary text-white px-5">
+		<h2 class="display-4 pb-3">Level Measurement Application</h2>
+		<h5 class="py-2 mt-4">1. Contact Information</h5>
+		<h5 class="py-2">2. General Information</h5>
+		<h5 class="py-2">3. Tank Material</h5>
+		<h5 class="py-2">4. Process Conditions</h5>
+		<h5 class="py-2">5. Instrument Specifics</h5>
+	</div>
+
+<div class="col-md-7 bg-light">
+
+<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+<form action="" method="post">{% csrf_token %}
+
+{{ wizard.management_form }}
+{% if wizard.form.forms %}
+    {{ wizard.form.management_form }}
+    {% for form in wizard.form.forms %}
+        {{ form }}
+    {% endfor %}
+    {% else %}
+        {% for field in wizard.form %}
+			<div class="form-group">
+		      {{ field.label_tag }}
+		      {% render_field field class="form-control" %}
+		      {% if field.help_text %}
+		        <small class="form-text text-muted">{{ field.help_text }}</small>
+		      {% endif %}
+		    </div>
+        {% endfor %}
+{% endif %}
+{% if wizard.steps.prev %}
+<button name="wizard_goto_step" class="btn btn-primary float-left mx-1" type="submit" value="{{ wizard.steps.first }}" formnovalidate>{% trans "first step" %}</button>
+<button name="wizard_goto_step" class="btn btn-primary float-left mx-1" type="submit" value="{{ wizard.steps.prev }}" formnovalidate>{% trans "prev step" %}</button>
+{% endif %}
+<input type="submit" class="btn btn-primary float-left mx-1" value="{% trans "Submit" %}"/>
+</form>
+</div>
+{% endblock %}
