@@ -3,8 +3,16 @@ from . import views
 
 from . import forms
 
+
+level_forms = (
+    ('contactinfo', forms.ContactInfoForm),
+    ('generalinfo', forms.GeneralInfoForm),
+    ('tankinfo', forms.TankInformationForm),
+    ('processinfo', forms.ProcessConditionsForm),
+)
+
 urlpatterns = [
-    path("level-application/", views.LevelWizard.as_view(
+    path("", views.LevelWizard.as_view(
         [
             forms.ContactInfoForm,
             forms.GeneralInfoForm,

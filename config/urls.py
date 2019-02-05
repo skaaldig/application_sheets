@@ -20,7 +20,8 @@ urlpatterns = [
         include("appsheets.users.urls", namespace="users"),
     ),
     path("accounts/", include("allauth.urls")),
-    path("level/", include("level.urls")),
+    path("application-forms/", TemplateView.as_view(template_name="pages/application_selector.html")),
+    path("application-forms/level/", include("level.urls")),
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )

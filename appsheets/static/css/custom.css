@@ -1,6 +1,6 @@
 
-.bd-text-blue {
-	color:#4778bb;
+.bg-accblue {
+	background-color:#1a6ea3;
 }
 
 
@@ -9,4 +9,8 @@
   background-color: #FF3500; /* Green */
   border-color:#551400;
   color:white;
+}
+
+.text-accblue {
+	color:#1a6ea3;
 }

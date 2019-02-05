@@ -32,12 +32,12 @@ class GeneralInfoForm(forms.Form):
         ('IN', 'IN')
     )
 
-    tag_number = forms.CharField(max_length=255)
+    tag_number = forms.CharField(max_length=255, required=False)
     measurement_principal = forms.ChoiceField(widget=forms.Select, choices=MEASURING_PRINCIPAL)
     measurement_type = forms.ChoiceField(widget=forms.Select, choices=MEASUREMENT_TYPE)
-    chamber_height = forms.IntegerField()
+    bypass_chamber_height = forms.IntegerField()
     height_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
-    chamber_width = forms.IntegerField()
+    bypass_chamber_width = forms.IntegerField()
     width_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
     chamber_material = forms.CharField(max_length=255)
 

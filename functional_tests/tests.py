@@ -5,6 +5,9 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 
 
+MAX_WAIT = 10
+
+
 class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
@@ -16,7 +19,7 @@ class NewVisitorTest(LiveServerTestCase):
     def test_list_of_forms_loads(self):
         # User goes to url page loads.
 
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.live_server_url + '/application-forms/')
         self.assertIn('Application Information', self.browser.title)
 
         # User sees a dropdown menu
@@ -36,11 +39,12 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertEqual(level_item.get_attribute('innerHTML').lower(), expected_items[1])
         time.sleep(1)
         drop_down.click()
+        time.sleep(1)
         level_item.click()
         time.sleep(1)
 
         # User is redirected to new page
-        self.assertEqual(self.browser.current_url, self.live_server_url + '/level-measurement/')
-        
+        self.assertEqual(self.browser.current_url, self.live_server_url + '/application-forms/level/')
 
-        # User 
+
+        # User
