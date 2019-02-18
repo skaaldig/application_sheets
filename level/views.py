@@ -16,7 +16,7 @@ TEMPLATES = {
 }
 
 
-class LevelWizard(SessionWizardView):
+class LevelWizard(NamedUrlSessionWizardView):
 
     def get_template_names(self):
         return [TEMPLATES[self.steps.current]]

@@ -57,7 +57,7 @@ class TankInformationForm(forms.Form):
     min_fluid = forms.IntegerField()
     min_fluid_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
     process_connection = forms.CharField(max_length=255)
-    alt_process_connection = forms.CharField(max_length=255)
+    alt_process_connection = forms.CharField(max_length=255, required=False)
 
 
 class NozzelInformationForm(forms.Form):
@@ -76,7 +76,7 @@ class NozzelInformationForm(forms.Form):
 
 class ProcessConditionsForm(forms.Form):
     TEMP_UNITS = (
-        ('C', 'F'),
+        ('C', 'C'),
         ('F', 'F'),
         ('K', 'K')
     )
