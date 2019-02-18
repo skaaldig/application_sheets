@@ -1,0 +1,55 @@
+{% extends "pages/level/base_step.html" %}
+{% load crispy_forms_tags %}
+
+{% block form %}
+
+
+<div class="form-row">
+    <div class="form-group col-6">
+        {{ form.vessel_height|as_crispy_field }}
+    </div>
+
+    <div class="form-group col-6">
+        {{ form.vessel_height_unit|as_crispy_field }}
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-6">
+        {{ form.vessel_width|as_crispy_field }}
+    </div>
+
+    <div class="form-group col-6">
+        {{ form.vessel_width_unit|as_crispy_field }}
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-6">
+        {{ form.max_fluid|as_crispy_field }}
+    </div>
+
+    <div class="form-group col-6">
+        {{ form.max_fluid_unit|as_crispy_field }}
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-6">
+        {{ form.min_fluid|as_crispy_field }}
+    </div>
+
+    <div class="form-group col-6">
+        {{ form.min_fluid_unit|as_crispy_field }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form.process_connection|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.alt_process_connection|as_crispy_field }}
+</div>
+
+{% endblock %}

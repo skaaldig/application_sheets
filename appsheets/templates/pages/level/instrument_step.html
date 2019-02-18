@@ -1,0 +1,42 @@
+{% extends "pages/level/base_step.html" %}
+{% load crispy_forms_tags %}
+
+{% block form %}
+
+<div class="form-group">
+    {{ form.power_available|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.power_outputs|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.alarms|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.alarms_description|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.pump_options|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.pump_options_description|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.area_classification|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.electrical_housing|as_crispy_field }}
+</div>
+
+<div class="form-group">
+    {{ form.special_requirements|as_crispy_field }}
+</div>
+
+{% endblock %}

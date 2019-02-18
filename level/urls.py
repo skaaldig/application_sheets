@@ -5,20 +5,15 @@ from . import forms
 
 
 level_forms = (
-    ('contactinfo', forms.ContactInfoForm),
-    ('generalinfo', forms.GeneralInfoForm),
-    ('tankinfo', forms.TankInformationForm),
-    ('processinfo', forms.ProcessConditionsForm),
+    ('contact', forms.ContactInfoForm),
+    ('general', forms.GeneralInfoForm),
+    ('tank', forms.TankInformationForm),
+    ('nozzel', forms.NozzelInformationForm),
+    ('process', forms.ProcessConditionsForm),
+    ('medium', forms.MediumCharacteristicsForm),
+    ('instrument', forms.InstrumentSpecificsForm)
 )
 
 urlpatterns = [
-    path("", views.LevelWizard.as_view(
-        [
-            forms.ContactInfoForm,
-            forms.GeneralInfoForm,
-            forms.TankInformationForm,
-            forms.ProcessConditionsForm,
-            forms.InstrumentSpecificsForm
-        ]
-    )),
+    path("", views.LevelWizard.as_view(level_forms)),
 ]

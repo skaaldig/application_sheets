@@ -57,13 +57,21 @@ class TankInformationForm(forms.Form):
     min_fluid = forms.IntegerField()
     min_fluid_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
     process_connection = forms.CharField(max_length=255)
+    alt_process_connection = forms.CharField(max_length=255)
+
+
+class NozzelInformationForm(forms.Form):
+    UNITS = (
+        ('FT', 'FT'),
+        ('IN', 'IN')
+    )
+
     nozzel_diameter = forms.IntegerField()
     nozzel_diameter_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
     nozzel_height = forms.IntegerField()
     nozzel_height_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
     nozzel_center_to_wall = forms.IntegerField()
     nozzel_center_to_wall_unit = forms.ChoiceField(widget=forms.Select, choices=UNITS)
-    alt_process_connection = forms.CharField(max_length=255)
 
 
 class ProcessConditionsForm(forms.Form):
@@ -78,6 +86,21 @@ class ProcessConditionsForm(forms.Form):
         ('BARG', 'BARG')
     )
 
+    medium_min_temp = forms.IntegerField()
+    medium_min_unit = forms.ChoiceField(widget=forms.Select, choices=TEMP_UNITS)
+    medium_max_temp = forms.IntegerField()
+    medium_max_unit = forms.ChoiceField(widget=forms.Select, choices=TEMP_UNITS)
+
+    vessel_min_pressure = forms.IntegerField()
+    vessel_min_unit = forms.ChoiceField(widget=forms.Select, choices=PRESSURE_UNITS)
+    vessel_max_pressure = forms.IntegerField()
+    vessel_max_unit = forms.ChoiceField(widget=forms.Select, choices=PRESSURE_UNITS)
+
+    dielectric_top = forms.IntegerField()
+    dielectric_bottom = forms.IntegerField()
+
+
+class MediumCharacteristicsForm(forms.Form):
     STATES = (
         ('LIQUID', 'Liquid'),
         ('POWDER', 'Powder'),
@@ -98,19 +121,6 @@ class ProcessConditionsForm(forms.Form):
         ('AGITATED', 'Agitated'),
         ('FOAMS', 'Foams')
     )
-
-    medium_min_temp = forms.IntegerField()
-    medium_min_unit = forms.ChoiceField(widget=forms.Select, choices=TEMP_UNITS)
-    medium_max_temp = forms.IntegerField()
-    medium_max_unit = forms.ChoiceField(widget=forms.Select, choices=TEMP_UNITS)
-
-    vessel_min_pressure = forms.IntegerField()
-    vessel_min_unit = forms.ChoiceField(widget=forms.Select, choices=PRESSURE_UNITS)
-    vessel_max_pressure = forms.IntegerField()
-    vessel_max_unit = forms.ChoiceField(widget=forms.Select, choices=PRESSURE_UNITS)
-
-    dielectric_top = forms.IntegerField()
-    dielectric_bottom = forms.IntegerField()
 
     medium_name = forms.CharField(max_length=255)
     media_state = forms.ChoiceField(widget=forms.Select, choices=STATES)
