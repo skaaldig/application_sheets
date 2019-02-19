@@ -1,63 +1,73 @@
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}Application Information{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}Application Information{% endblock title %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
 
-    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
 
-    {% block css %}
-    
-    <!-- Latest compiled and minified Bootstrap 4.1.1 CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
-    
-    {% endblock %}
+  {% block css %}
 
-  </head>
+  <!-- Latest compiled and minified Bootstrap 4.1.1 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-  <body>
-    
-    <div class="container">
+  <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  <link href="{% static 'css/custom.css' %}" rel="stylesheet">
 
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-          {% endfor %}
-      {% endif %}
+  {% endblock %}
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+</head>
 
-    </div> <!-- /container -->
+<body>
 
-    {% block modal %}{% endblock modal %}
+  <div class="container">
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+
+    {% block content %}
+    <p>Use this document as a way to quick start any new project.</p>
+    {% endblock content %}
+
+  </div> <!-- /container -->
+
+  {% block modal %}{% endblock modal %}
 
 
-    {% block javascript %}
-      
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  {% block javascript %}
 
-      <!-- place project specific Javascript in this file -->
-      
-      <script src="{% static 'js/project.js' %}"></script>
-      
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
 
-    {% endblock javascript %}
-  </body>
+  <!-- place project specific Javascript in this file -->
+
+  <script src="{% static 'js/project.js' %}"></script>
+  <script src="{% static 'js/progressbar.min.js' %}"></script>
+  <script src="{% static 'js/progressbar.js' %}"></script>
+
+  {% endblock javascript %}
+</body>
+
 </html>
- 

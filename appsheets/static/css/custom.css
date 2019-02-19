@@ -14,3 +14,10 @@
 .text-accblue {
 	color:#1a6ea3;
 }
+
+
+#container {
+  margin: 20px;
+  height: 8px;
+  position: relative;
+}

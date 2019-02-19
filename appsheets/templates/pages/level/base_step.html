@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static i18n %}
 {% block head %}
 {{ wizard.form.media }}
 {% endblock %}
@@ -22,7 +22,8 @@
     </div>
 
     <div class="col-md-7 mt-3 py-5 bg-accblue text-light rounded">
-
+        <div id="container"></div>
+        <p class="lead text-center">Progress</p>
         <form action="" method="post">{% csrf_token %}
 
             {{ wizard.management_form }}
@@ -39,13 +40,15 @@
             {% endif %}
 
             {% if wizard.steps.step1 == wizard.steps.count %}
-            <input type="submit" class="btn btn-warning float-left mx-1" value="{% trans "Submit" %}" />
+            <input type="submit" class="btn btn-warning float-left mx-1" value="{% trans 'Submit' %}" />
 
             {% else %}
-            <input type="submit" class="btn btn-warning float-left mx-1" value="{% trans "Next" %}" />
+            <input type="submit" class="btn btn-warning float-left mx-1" value="{% trans 'Next' %}" />
             {% endif %}
 
-            <h5 class="float-right text-warning">Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h5>
+            <h5 class="float-right text-warning" id="counter">Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}
+            </h5>
         </form>
     </div>
+
     {% endblock %}
