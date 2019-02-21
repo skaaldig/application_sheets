@@ -33,20 +33,16 @@ const bar = new ProgressBar.Line(container, {
     }
 });
 
-const getMaxStep = function () {
+const getSteps = function () {
     const x = document.getElementById("counter").innerHTML
     const numbers = x.match(/\d+/g)
-    const maxSteps = parseInt(numbers[1])
-    return parseFloat(((100 / maxSteps) / 100).toFixed(5))
+    return [parseInt(numbers[0]), parseInt(numbers[1])]
 }
 
-const interval = getMaxStep()
-
-const getMinStep = function () {
-    const x = document.getElementById("counter").innerHTML
-    const numbers = x.match(/\d+/g)
-    const minNum = parseInt(numbers[0])
-    return parseFloat((minNum * interval).toFixed(5))
+const getCurrentStep = function () {
+    const pageNums = getSteps();
+    const interval = parseFloat(((100 / pageNums[1]) / 100).toFixed(5))
+    return parseFloat((pageNums[0] * interval).toFixed(5))
 }
 
-bar.animate(getMinStep());
+bar.animate(getCurrentStep());
