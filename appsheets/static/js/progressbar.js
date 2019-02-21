@@ -34,8 +34,8 @@ const bar = new ProgressBar.Line(container, {
 });
 
 const getSteps = function () {
-    const x = document.getElementById("counter").innerHTML
-    const numbers = x.match(/\d+/g)
+    const text = document.getElementById("counter").innerHTML
+    const numbers = text.match(/\d+/g)
     return [parseInt(numbers[0]), parseInt(numbers[1])]
 }
 
