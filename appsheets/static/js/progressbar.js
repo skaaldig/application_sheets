@@ -27,10 +27,7 @@ const bar = new ProgressBar.Line(container, {
         autoStyleContainer: false
     },
     from: { color: '#FFEA82' },
-    to: { color: '#ED6A5A' },
-    step: (state, bar) => {
-        bar.setText(Math.round(bar.value() * 100) + ' %');
-    }
+    to: { color: '#ED6A5A' }
 });
 
 const getSteps = function () {

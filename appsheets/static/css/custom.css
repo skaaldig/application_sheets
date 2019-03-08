@@ -21,3 +21,10 @@
   height: 8px;
   position: relative;
 }
+
+
+@media only screen and (min-width:760px) {
+  .app-form {
+    padding: 0 10% 0 10%;
+  }
+}

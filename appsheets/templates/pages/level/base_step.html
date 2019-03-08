@@ -7,48 +7,34 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-md-5 pb-5 pt-3 px-5">
-        <h2 class="display-4 pb-3 text-accblue">Level Measurement Application</h2>
-        <div class="d-none d-sm-block">
-            <h5 class="py-2 mt-4 pl-2">Contact</h5>
-            <h5 class="py-2 pl-2">General</h5>
-            <h5 class="py-2 pl-2">Tank</h5>
-            <h5 class="py-2 pl-2">Nozzel</h5>
-            <h5 class="py-2 pl-2">Process</h5>
-            <h5 class="py-2 pl-2">Medium</h5>
-            <h5 class="py-2 pl-2">Instrument</h5>
-        </div>
-    </div>
-
-    <div class="col-md-7 mt-3 py-5 bg-accblue text-light rounded">
+<div class="row justify-content-md-center">
+    <div class="col-md-8 form-container bg-dark text-light pb-5">
+        <h2 class="text-success text-center">Level Measurement Application</h2>
         <div id="container"></div>
-        <p class="lead text-center">Progress</p>
-        <form action="" method="post">{% csrf_token %}
-
+        <div class="text-center">
+            <p class="lead">Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+        </div>
+        <form class="app-form" action="" method="post">{% csrf_token %}
             {{ wizard.management_form }}
-
             {% block form %}
             {% endblock %}
-
-
             {% if wizard.steps.prev %}
-            <button name="wizard_goto_step" class="btn btn-warning float-left mx-1" type="submit"
+            <button name="wizard_goto_step" class="btn btn-danger float-left mx-1" type="submit"
                 value="{{ wizard.steps.first }}" formnovalidate>{% trans "First" %}</button>
-            <button name="wizard_goto_step" class="btn btn-warning float-left mx-1" type="submit"
+            <button name="wizard_goto_step" class="btn btn-danger float-left mx-1" type="submit"
                 value="{{ wizard.steps.prev }}" formnovalidate>{% trans "Previous" %}</button>
             {% endif %}
 
             {% if wizard.steps.step1 == wizard.steps.count %}
-            <input type="submit" class="btn btn-warning float-left mx-1" value="{% trans 'Submit' %}" />
+            <input type="submit" class="btn btn-danger float-left mx-1" value="{% trans 'Submit' %}" />
 
             {% else %}
-            <input type="submit" class="btn btn-warning float-left mx-1" value="{% trans 'Next' %}" />
+            <input type="submit" class="btn btn-danger float-left mx-1" value="{% trans 'Next' %}" />
             {% endif %}
 
             <h5 class="float-right text-warning" id="counter">Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}
             </h5>
         </form>
     </div>
-
-    {% endblock %}
+</div>
+{% endblock %}
