@@ -8,32 +8,31 @@
 {% block content %}
 
 <div class="row justify-content-md-center">
-    <div class="col-md-8 form-container bg-dark text-light pb-5">
-        <h2 class="text-success text-center">Level Measurement Application</h2>
+    <div class="col-md-8 form-container text-dark pb-5 bg-light">
+        <h2 class="pt-5 text-center thin-head">Level Measurement Application</h2>
         <div id="container"></div>
         <div class="text-center">
-            <p class="lead">Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+            <p class="lead" id="counter">Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
         </div>
         <form class="app-form" action="" method="post">{% csrf_token %}
             {{ wizard.management_form }}
             {% block form %}
             {% endblock %}
-            {% if wizard.steps.prev %}
-            <button name="wizard_goto_step" class="btn btn-danger float-left mx-1" type="submit"
-                value="{{ wizard.steps.first }}" formnovalidate>{% trans "First" %}</button>
-            <button name="wizard_goto_step" class="btn btn-danger float-left mx-1" type="submit"
-                value="{{ wizard.steps.prev }}" formnovalidate>{% trans "Previous" %}</button>
-            {% endif %}
 
             {% if wizard.steps.step1 == wizard.steps.count %}
-            <input type="submit" class="btn btn-danger float-left mx-1" value="{% trans 'Submit' %}" />
+            <input type="submit" class="btn btn-danger float-right mx-1" value="{% trans 'Submit' %}" />
 
             {% else %}
-            <input type="submit" class="btn btn-danger float-left mx-1" value="{% trans 'Next' %}" />
+            <input type="submit" class="btn btn-danger float-right mx-1" value="{% trans 'Next' %}" />
             {% endif %}
 
-            <h5 class="float-right text-warning" id="counter">Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}
-            </h5>
+            {% if wizard.steps.prev %}
+            <button name="wizard_goto_step" class="btn btn-danger float-right mx-1" type="submit"
+                value="{{ wizard.steps.prev }}" formnovalidate>{% trans "Previous" %}</button>
+            <button name="wizard_goto_step" class="btn btn-danger float-right mx-1" type="submit"
+                value="{{ wizard.steps.first }}" formnovalidate>{% trans "First" %}</button>
+
+            {% endif %}
         </form>
     </div>
 </div>

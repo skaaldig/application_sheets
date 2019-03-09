@@ -1,3 +1,6 @@
+body {
+  background-color: #edeeef;
+}
 
 .bg-accblue {
 	background-color:#1a6ea3;
@@ -20,6 +23,10 @@
   margin: 20px;
   height: 8px;
   position: relative;
+}
+
+.thin-head {
+  font-weight:normal;
 }
 
 
