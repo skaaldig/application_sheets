@@ -70,10 +70,12 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'formtools',
     'widget_tweaks',
+    'phonenumber_field',
 ]
 LOCAL_APPS = [
     'appsheets.users.apps.UsersAppConfig',
     'level',
+    'customers',
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
